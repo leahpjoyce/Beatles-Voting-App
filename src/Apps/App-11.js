@@ -25,33 +25,10 @@ const list = [
 ];
 
 class App extends Component {
-  state = {
-    members: []
-  };
-
-  componentDidMount() {
-    this.setState({ members: list });
-  }
-
-
-  handleEvent = memberId => {
-    const updatedList = this.state.members.map(member => {
-      if (member.id === memberId) {
-        return Object.assign({}, member, {
-          votes: member.votes + 1
-        });
-      } else {
-        return member;
-      }
-    });
-  
-    this.setState({
-      members: updatedList
-    });
-  };
+  handleEvent = e => console.log('button clicked for ' + e);
 
   render() {
-    return this.state.members.map(member => (
+    return list.map(member => (
       <Beatle key={member.id} id={member.id} name={member.name} votes={member.votes} onVote={this.handleEvent} />
     ));
   }
